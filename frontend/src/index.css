@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 6%;
+    --foreground: 213 31% 91%;
+    --card: 222 33% 11%;
+    --card-foreground: 213 31% 91%;
+    --popover: 222 33% 11%;
+    --popover-foreground: 213 31% 91%;
+    --primary: 263 70% 58%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 217 19% 20%;
+    --secondary-foreground: 213 31% 91%;
+    --muted: 217 19% 16%;
+    --muted-foreground: 215 16% 60%;
+    --accent: 263 70% 58%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 217 19% 22%;
+    --input: 217 19% 22%;
+    --ring: 263 70% 58%;
+    --radius: 0.625rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    margin: 0;
+  }
+}
+
+/* ──────────────────────────────────────────────
+   ReactFlow theme overrides (dark VectorShift)
+   ────────────────────────────────────────────── */
+.react-flow__background {
+  background-color: hsl(var(--background)) !important;
+}
+.react-flow__controls {
+  background: hsl(var(--card)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: 8px !important;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
+}
+.react-flow__controls-button {
+  background: hsl(var(--card)) !important;
+  border-bottom: 1px solid hsl(var(--border)) !important;
+  color: hsl(var(--muted-foreground)) !important;
+  fill: hsl(var(--muted-foreground)) !important;
+}
+.react-flow__controls-button:hover {
+  background: hsl(var(--secondary)) !important;
+  color: hsl(var(--foreground)) !important;
+  fill: hsl(var(--foreground)) !important;
+}
+.react-flow__minimap {
+  background: hsl(var(--card)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: 8px !important;
+  overflow: hidden;
+}
+.react-flow__edge-path {
+  stroke: #7c3aed !important;
+  stroke-width: 2 !important;
+}
+.react-flow__edge.animated .react-flow__edge-path {
+  stroke-dasharray: 5;
+  animation: dashdraw 0.5s linear infinite;
+}
+@keyframes dashdraw {
+  to {
+    stroke-dashoffset: -10;
+  }
+}
+.react-flow__connection-line {
+  stroke: #a78bfa !important;
+  stroke-width: 2 !important;
+}
+.react-flow__handle {
+  width: 10px;
+  height: 10px;
+  background: hsl(var(--card));
+  border: 2px solid #7c3aed;
+  transition: all 0.15s ease;
+}
+.react-flow__handle:hover {
+  background: #7c3aed;
+  box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.25);
+}
+.react-flow__attribution {
+  display: none;
+}
