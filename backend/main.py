@@ -9,7 +9,7 @@ from collections import defaultdict, deque
 
 app = FastAPI(title="VectorShift Pipeline API")
 
-# Allow the Vite dev server (and CRA, just in case) to call us.
+# Allow local dev servers and any Vercel deployment.
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
@@ -17,7 +17,10 @@ app.add_middleware(
         "http://127.0.0.1:5173",
         "http://localhost:3000",
         "http://127.0.0.1:3000",
+        # Vercel deployments — covers all preview + production URLs
+        "https://vector-shift-lac.vercel.app",
     ],
+    allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
